@@ -84,11 +84,11 @@ Parameters:
 13 classes: Sp: spleen, RK: right kidney, LK: left kidney, Ga: gallbladder, Es: esophagus, Li: liver, St: stomach, Ao: aorta, IVC: inferior vena cava, PSV: portal & splenic veins, Pa: pancreas, RAG: right adrenal gland, LAG: left adrenal gland.
 
 _4.1.1 Trained with 10% labeled data_
-![img_1.png](img_1.png)
+![image_1.png](./images/image_1.png)
 _4.1.2 Trained with 20% labeled data_
-![img.png](img.png)
+![image_2.png](./images/image_2.png)
 _4.1.3 Trained with 30% labeled data_
-![img_2.png](img_2.png)
+![image_3.png](./images/image_3.png)
 
 #### 4.2 AMOS
 
