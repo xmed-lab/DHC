@@ -1,6 +1,12 @@
-## DHC (Dual-debiased Heterogeneous Co-training Framework)
 
 
+
+
+## [MICCAI2023] DHC
+
+This repo is the official implementation of 'DHC: Dual-debiased Heterogeneous Co-training Framework for Class-imbalanced Semi-supervised Medical Image Segmentation' which is accepted at MICCAI-2023.
+
+![framework.png](./images/framework.png)
 
 ### 1. Environment
 
@@ -85,8 +91,10 @@ Parameters:
 
 _4.1.1 Trained with 10% labeled data_
 ![synapse-10.png](./images/synapse-10.png)
+
 _4.1.2 Trained with 20% labeled data_
 ![synapse-20.png](./images/synapse-20.png)
+
 _4.1.3 Trained with 40% labeled data_
 ![synapse-40.png](./images/synapse-40.png)
 
@@ -96,8 +104,10 @@ _4.1.3 Trained with 40% labeled data_
 
 _4.2.1 Trained with 2% labeled data_
 ![amos-2.png](./images/amos-2.png)
+
 _4.2.2 Trained with 5% labeled data_
 ![amos-5.png](./images/amos-5.png)
+
 _4.2.3 Trained with 10% labeled data_
 ![amos-10.png](./images/amos-10.png)
 
