@@ -82,9 +82,9 @@ Parameters:
 
 `-w`: weight of unsupervised loss
 
-**Model weights trained on 20% labeled Synapse can be downloaded from** [here](https://drive.google.com/drive/folders/1aUU2KvNUVAYLo4qqvT5JBd7hHzo_4K1Q?usp=drive_link).
+**Weights of all the above models trained on 20% labeled Synapse can be downloaded from** [here](https://drive.google.com/drive/folders/1aUU2KvNUVAYLo4qqvT5JBd7hHzo_4K1Q?usp=drive_link).
 
-**Model weights trained on 5% labeled AMOS can be downloaded from** [here](https://drive.google.com/drive/folders/1mLrM9AswKBiRLu5t63HAtI2ivg17Lt2m?usp=drive_link).
+**Weights of all the above models trained on 5% labeled AMOS can be downloaded from** [here](https://drive.google.com/drive/folders/1mLrM9AswKBiRLu5t63HAtI2ivg17Lt2m?usp=drive_link).
 
 
 ### 4. Results
