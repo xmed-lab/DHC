@@ -12,6 +12,11 @@ This repo is the official implementation of 'DHC: Dual-debiased Heterogeneous Co
 
 This code has been tested with Python 3.6, PyTorch 1.8, torchvision 0.9.0, and CUDA 11.1 on Ubuntu 20.04.
 
+Before running the code, set the `PYTHONPATH` to `pwd`:
+```shell
+export PYTHONPATH=$(pwd)/code:$PYTHONPATH
+```
+
 ### 2. Data Preparation
 
 #### 2.1 Synapse
