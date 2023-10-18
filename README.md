@@ -4,7 +4,7 @@
 
 ## [MICCAI2023] DHC
 
-This repo is the official implementation of 'DHC: Dual-debiased Heterogeneous Co-training Framework for Class-imbalanced Semi-supervised Medical Image Segmentation' which is accepted at MICCAI-2023.
+This repo is the official implementation of [DHC: Dual-debiased Heterogeneous Co-training Framework for Class-imbalanced Semi-supervised Medical Image Segmentation](https://link.springer.com/chapter/10.1007/978-3-031-43898-1_56) which is accepted at MICCAI-2023.
 
 ![framework.png](./images/framework.png)
 
@@ -120,6 +120,19 @@ _4.2.2 Trained with 5% labeled data_
 _4.2.3 Trained with 10% labeled data_
 ![amos-10.png](./images/amos-10.png)
 
+
+## Cite
+If this code is helpful for your study, please cite:
+```
+@inproceedings{wang2023dhc,
+  title={DHC: Dual-debiased Heterogeneous Co-training Framework for Class-imbalanced Semi-supervised Medical Image Segmentation},
+  author={Wang, Haonan and Li, Xiaomeng},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={582--591},
+  year={2023},
+  organization={Springer}
+}
+```
 
 ## License
 
