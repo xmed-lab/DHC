@@ -8,6 +8,11 @@ This repo is the official implementation of [DHC: Dual-debiased Heterogeneous Co
 
 ![framework.png](./images/framework.png)
 
+🚀🚀🚀 We highly recommend you try our new work: https://github.com/xmed-lab/GenericSSL, which considers more practical scenarios of semi-supervised segmentation and the paper is accepted at _**NeurIPS-2023**_!
+
+
+
+
 ### 1. Environment
 
 This code has been tested with Python 3.6, PyTorch 1.8, torchvision 0.9.0, and CUDA 11.1 on Ubuntu 20.04.
