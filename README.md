@@ -37,6 +37,8 @@ Run `./code/data/preprocess.py` to
 
 Or use our pre-split files in `./synapse/splits/*.txt`. 
 
+🔥🔥🔥 The **preprocessed Synapse dataset** is available for downloading via [this link](https://hkustconnect-my.sharepoint.com/:f:/g/personal/hwanggr_connect_ust_hk/Ei5rEfpFYx1Pl0xsV--V55cBktabIcxh5Qbva3fKvkbF5Q?e=1l7HEK).
+
 After preprocessing, the `./synapse_data/` folder should be organized as follows:
 
 ```shell
@@ -57,6 +59,8 @@ After preprocessing, the `./synapse_data/` folder should be organized as follows
 The dataset can be downloaded from https://amos22.grand-challenge.org/Dataset/
 
 Run `./code/data/preprocess_amos.py` to pre-process.
+
+🔥🔥🔥 The **preprocessed AMOS22 dataset** is available for downloading via [this link](https://hkustconnect-my.sharepoint.com/:f:/g/personal/hwanggr_connect_ust_hk/En8eq9ClytlAi8ZJaJBLswoB5tfJElLm1yd86gF2WIZVGw?e=7LhcfH).
 
 ### 3. Training & Testing & Evaluating
 
