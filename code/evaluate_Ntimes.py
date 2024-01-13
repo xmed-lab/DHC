@@ -44,10 +44,16 @@ if __name__ == '__main__':
             label = label.astype(np.int8)
             dd, ww, hh = label.shape
             label = torch.FloatTensor(label).unsqueeze(0).unsqueeze(0)
-            resize_shape=(config.patch_size[0]+config.patch_size[0]//4,
-                          config.patch_size[1]+config.patch_size[1]//4,
-                          config.patch_size[2]+config.patch_size[2]//4)
-            label = F.interpolate(label, size=resize_shape,mode='nearest')
+
+
+
+            resize_shape=(config.patch_size[0]+config.patch_size[0]//8,
+                          config.patch_size[1]+config.patch_size[1]//8,
+                          config.patch_size[2]+config.patch_size[2]//8)
+            if args.task == "amos":
+                label = F.interpolate(label, size=resize_shape,mode='nearest')
+            else:
+                label = F.interpolate(label, size=(dd, ww//2, hh//2),mode='nearest')
             label = label.squeeze().numpy()
 
             for i in test_cls:
