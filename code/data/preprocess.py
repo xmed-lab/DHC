@@ -32,21 +32,21 @@ def process_npy():
             label_path =os.path.join(config.base_dir, f'labels{tag}', f'{label_id}.nii.gz')
 
 
-            resize_shape=(config.patch_size[0]+config.patch_size[0]//4,
-                          config.patch_size[1]+config.patch_size[1]//4,
-                          config.patch_size[2]+config.patch_size[2]//4)
+            # resize_shape=(config.patch_size[0]+config.patch_size[0]//4,
+            #               config.patch_size[1]+config.patch_size[1]//4,
+            #               config.patch_size[2]+config.patch_size[2]//4)
             image = read_nifti(image_path)
             label = read_nifti(label_path)
             image = image.astype(np.float32)
             label = label.astype(np.int8)
 
-            image = torch.FloatTensor(image).unsqueeze(0).unsqueeze(0)
-            label = torch.FloatTensor(label).unsqueeze(0).unsqueeze(0)
+            # image = torch.FloatTensor(image).unsqueeze(0).unsqueeze(0)
+            # label = torch.FloatTensor(label).unsqueeze(0).unsqueeze(0)
 
-            image = F.interpolate(image, size=resize_shape,mode='trilinear', align_corners=False)
-            label = F.interpolate(label, size=resize_shape,mode='nearest')
-            image = image.squeeze().numpy()
-            label = label.squeeze().numpy()
+            # image = F.interpolate(image, size=resize_shape,mode='trilinear', align_corners=False)
+            # label = F.interpolate(label, size=resize_shape,mode='nearest')
+            # image = image.squeeze().numpy()
+            # label = label.squeeze().numpy()
 
 
             np.save(
