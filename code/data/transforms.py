@@ -112,7 +112,7 @@ class RandomFlip_LR:
         ret_dict = {}
         for key in sample.keys():
             item = sample[key]
-            self._flip(item, prob)
+            item = self._flip(item, prob)
             ret_dict[key] = item
         return ret_dict
 
@@ -130,7 +130,7 @@ class RandomFlip_UD:
         ret_dict = {}
         for key in sample.keys():
             item = sample[key]
-            self._flip(item, prob)
+            item = self._flip(item, prob)
             ret_dict[key] = item
         return ret_dict
 
