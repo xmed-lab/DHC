@@ -16,6 +16,7 @@ from models.vnet import VNet, VNet4SSNet
 from models.vnet_dst import VNet_Decoupled
 from models.unet_ds import unet_3D_ds
 from models.unet import unet_3D
+from unetrpp.unetr_pp import UNETR_PP
 from utils import test_all_case, read_list, maybe_mkdir, test_all_case_AB
 from utils.config import Config
 config = Config(args.task)
@@ -90,6 +91,25 @@ if __name__ == '__main__':
             has_dropout=False).cuda()
         model.eval()
         args.cps = None
+
+    elif "unetrpp" in args.exp:
+        model_A = UNETR_PP(
+            in_channels=1,
+            out_channels=config.num_cls,
+            feature_size=config.n_filters,
+            hidden_size=config.n_filters * 16,
+            dims=[config.n_filters * 2, config.n_filters * 4, config.n_filters * 8, config.n_filters * 16]
+        ).cuda()
+        model_B = UNETR_PP(
+            in_channels=1,
+            out_channels=config.num_cls,
+            feature_size=config.n_filters,
+            hidden_size=config.n_filters * 16,
+            dims=[config.n_filters * 2, config.n_filters * 4, config.n_filters * 8, config.n_filters * 16]
+        ).cuda()
+        model_A.eval()
+        model_B.eval()
+
     else:
         model_A = VNet(
             n_channels=config.num_channels,

@@ -87,7 +87,7 @@ if __name__ == '__main__':
                             split=args.split,
                             num_cls=config.num_cls,
                             transform=transforms.Compose([
-                        RandomCrop(config.patch_size),
+                        RandomCrop(config.patch_size, args.task),
                         RandomFlip_LR(),
                         RandomFlip_UD(),
                         ToTensor(),
@@ -97,7 +97,7 @@ if __name__ == '__main__':
                            is_val=True,
                            num_cls=config.num_cls,
                            transform = transforms.Compose([
-                                      CenterCrop(config.patch_size),
+                                      CenterCrop(config.patch_size, args.task),
                                       ToTensor()
                                     ]))
     

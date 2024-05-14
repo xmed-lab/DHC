@@ -207,6 +207,7 @@ def test_all_case_AB(net_A, net_B, ids_list, task, num_classes, patch_size, stri
                 num_classes=num_classes
             )
         out = sitk.GetImageFromArray(pred.astype(np.float32))
+
         sitk.WriteImage(out, f'{test_save_path}/{data_id}.nii.gz')
 
 

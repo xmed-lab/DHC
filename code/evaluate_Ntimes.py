@@ -22,9 +22,7 @@ if __name__ == '__main__':
 
     ids_list = read_list('test', task=args.task)
     results_all_folds = []
-
     txt_path = "./logs/"+args.exp+"/evaluation_res.txt"
-    # print(txt_path)
     print("\n Evaluating...")
     fw = open(txt_path, 'w')
     for fold in range(1, args.folds+1):
@@ -33,9 +31,6 @@ if __name__ == '__main__':
         values = np.zeros((len(ids_list), len(test_cls), 2)) # dice and asd
 
         for idx, data_id in enumerate(tqdm(ids_list)):
-            # if idx > 1:
-            #     break
-            # print(os.path.join("./logs",args.exp, "fold"+str(fold), "predictions_"+args.cps,f'{data_id}.nii.gz'))
             pred = read_nifti(os.path.join("./logs",args.exp, "fold"+str(fold), "predictions_"+str(args.cps),f'{data_id}.nii.gz'))
             if args.task == "amos":
                 label = read_nifti(os.path.join(config.base_dir, 'labelsVa', f'{data_id}.nii.gz'))
@@ -46,11 +41,10 @@ if __name__ == '__main__':
             label = torch.FloatTensor(label).unsqueeze(0).unsqueeze(0)
 
 
-
-            resize_shape=(config.patch_size[0]+config.patch_size[0]//8,
-                          config.patch_size[1]+config.patch_size[1]//8,
-                          config.patch_size[2]+config.patch_size[2]//8)
             if args.task == "amos":
+                resize_shape = (config.patch_size[0] + config.patch_size[0] // 8,
+                                config.patch_size[1] + config.patch_size[1] // 8,
+                                config.patch_size[2] + config.patch_size[2] // 8)
                 label = F.interpolate(label, size=resize_shape,mode='nearest')
             else:
                 label = F.interpolate(label, size=(dd, ww//2, hh//2),mode='nearest')
@@ -72,8 +66,6 @@ if __name__ == '__main__':
 
                 values[idx][i-1] = np.array([dice, hd95])
 
-        # print(values.shape)
-        # values /= len(ids_list)
         values_mean_cases = np.mean(values, axis=0)
         results_all_folds.append(values)
         fw.write("Fold" + str(fold) + '\n')
@@ -92,8 +84,6 @@ if __name__ == '__main__':
         print(np.mean(values_mean_cases, axis=0)[0], np.mean(values_mean_cases, axis=0)[1])
 
     results_all_folds = np.array(results_all_folds)
-
-    # print(results_all_folds.shape)
 
     fw.write('\n\n\n')
     fw.write('All folds' + '\n')

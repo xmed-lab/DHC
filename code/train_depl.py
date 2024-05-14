@@ -86,7 +86,7 @@ def make_loader(split, dst_cls=Synapse_AMOS, repeat=None, is_training=True, unla
             unlabeled=unlabeled,
             num_cls=config.num_cls,
             transform=transforms.Compose([
-                RandomCrop(config.patch_size),
+                RandomCrop(config.patch_size, args.task),
                 RandomFlip_LR(),
                 RandomFlip_UD(),
                 ToTensor()
@@ -107,7 +107,7 @@ def make_loader(split, dst_cls=Synapse_AMOS, repeat=None, is_training=True, unla
             is_val=True,
             num_cls=config.num_cls,
             transform=transforms.Compose([
-                CenterCrop(config.patch_size),
+                CenterCrop(config.patch_size, args.task),
                 ToTensor()
             ])
         )

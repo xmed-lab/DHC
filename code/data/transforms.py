@@ -4,8 +4,9 @@ import torch.nn.functional as F
 
 
 class CenterCrop(object):
-    def __init__(self, output_size):
+    def __init__(self, output_size, task):
         self.output_size = output_size
+        self.task = task
 
     def __call__(self, sample):
         image = sample['image']
@@ -21,24 +22,31 @@ class CenterCrop(object):
 
         w1, h1, d1 = None, None, None
         ret_dict = {}
-        # resize_shape=(self.output_size[0]+self.output_size[0]//4,
-        #               self.output_size[1]+self.output_size[1]//4,
-        #               self.output_size[2]+self.output_size[2]//4)
+
+
         if w1 is None:
             (w, h, d) = image.shape
             w1 = int(round((w - self.output_size[0]) / 2.))
-            h1 = int(round((h - self.output_size[1]) / 2.))
-            d1 = int(round((d - self.output_size[2]) / 2.))
+            if self.task == 'synapse':
+                h1 = int(round((h//2 - self.output_size[1]) / 2.))
+                d1 = int(round((d//2 - self.output_size[2]) / 2.))
+            else:
+                h1 = int(round((h - self.output_size[1]) / 2.))
+                d1 = int(round((d - self.output_size[2]) / 2.))
+
+
         for key in sample.keys():
             item = sample[key]
-            # item = torch.FloatTensor(item).unsqueeze(0).unsqueeze(0)
-            # print(item.shape)
-            # if key == 'image':
-            #     item = F.interpolate(item, size=resize_shape,mode='trilinear', align_corners=False)
-            # else:
-            #     item = F.interpolate(item, size=resize_shape, mode="nearest")
-                # print(item.max())
-            # item = item.squeeze().numpy()
+            if self.task == 'synapse':
+                dd, ww, hh = item.shape
+                item = torch.FloatTensor(item).unsqueeze(0).unsqueeze(0)
+                if key == 'image':
+                    item = F.interpolate(item, size=(dd, ww // 2, hh // 2), mode='trilinear', align_corners=False)
+                    # print("img",item.shape)
+                else:
+                    item = F.interpolate(item, size=(dd, ww // 2, hh // 2), mode="nearest")
+                    # print("lbl",item.shape)
+                item = item.squeeze().numpy()
             if padding_flag:
                 item = np.pad(item, [(pw, pw), (ph, ph), (pd, pd)], mode='constant', constant_values=0)
 
@@ -53,8 +61,9 @@ class RandomCrop(object):
     Args:
     output_size (int): Desired output size
     '''
-    def __init__(self, output_size):
+    def __init__(self, output_size, task):
         self.output_size = output_size
+        self.task = task
 
     def __call__(self, sample):
         image = sample['image']
@@ -67,27 +76,31 @@ class RandomCrop(object):
         
         w1, h1, d1 = None, None, None
         ret_dict = {}
-        # print(image.shape)
-        # resize_shape=(self.output_size[0]+self.output_size[0]//4,
-        #               self.output_size[1]+self.output_size[1]//4,
-        #               self.output_size[2]+self.output_size[2]//4)
+
         if w1 is None:
             (w, h, d) = image.shape
             w1 = np.random.randint(0, w - self.output_size[0])
-            h1 = np.random.randint(0, h - self.output_size[1])
-            d1 = np.random.randint(0, d - self.output_size[2])
+            if self.task == 'synapse':
+                h1 = np.random.randint(0, h //2 - self.output_size[1])
+                d1 = np.random.randint(0, d //2 - self.output_size[2])
+            else:
+                h1 = np.random.randint(0, h - self.output_size[1])
+                d1 = np.random.randint(0, d - self.output_size[2])
 
         for key in sample.keys():
             item = sample[key]
-            # item = torch.FloatTensor(item).unsqueeze(0).unsqueeze(0)
+
             # print(item.shape)
-            # if key == 'image':
-            #     item = F.interpolate(item, size=resize_shape,mode='trilinear', align_corners=False)
-                # print("img",item.shape)
-            # else:
-            #     item = F.interpolate(item, size=resize_shape, mode="nearest")
-                # print("lbl",item.shape)
-            # item = item.squeeze().numpy()
+            if self.task == 'synapse':
+                dd, ww, hh = item.shape
+                item = torch.FloatTensor(item).unsqueeze(0).unsqueeze(0)
+                if key == 'image':
+                    item = F.interpolate(item, size=(dd, ww//2, hh//2),mode='trilinear', align_corners=False)
+                    # print("img",item.shape)
+                else:
+                    item = F.interpolate(item, size=(dd, ww//2, hh//2), mode="nearest")
+                    # print("lbl",item.shape)
+                item = item.squeeze().numpy()
             if padding_flag:
                 item = np.pad(item, [(pw, pw), (ph, ph), (pd, pd)], mode='constant', constant_values=0)
 
