@@ -35,7 +35,7 @@ Run `./code/data/preprocess.py` to
 - generate the train/validation/test splits
 - generate the labeled/unlabeled splits 
 
-🔥🔥🔥 The **preprocessed Synapse dataset** is available for downloading via [this link](https://hkustconnect-my.sharepoint.com/:f:/g/personal/hwanggr_connect_ust_hk/EiTutlVVOslAk05-1vI6u7gB4LthO_9BUkbj5ZDPsKKF_A?e=AIGf3M).
+🔥🔥🔥 The **preprocessed Synapse dataset** is available for downloading via [this link](https://hkustconnect-my.sharepoint.com/:f:/g/personal/hwanggr_connect_ust_hk/EmOL8Cn-GTBJtOjg6zNgsPABdF6TgoWtRac4FwGqfFxLvQ?e=a1xaDJ).
 
 After preprocessing, the `./synapse_data/` folder should be organized as follows:
 
